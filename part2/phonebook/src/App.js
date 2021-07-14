@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Persons from './components/Persons'
 import PersonForm from './components/PersonForm'
 import Filter from './components/Filter'
-
-import axios from 'axios'
+import personService from './services/personService'
 
 const App = () => {
   // const [persons, setPersons] = useState([
@@ -20,12 +19,12 @@ const App = () => {
 
   useEffect(() => {
     // console.log('effect')
-    axios
-      .get('http://localhost:3001/persons')
-      .then(response => {
+    personService
+      .getAll()
+      .then(initialPersons => {
         // console.log('promise fulfilled')
-        setPersons(response.data)
-        setPersonsToShow(response.data) // a bit quick and dirty
+        setPersons(initialPersons)
+        setPersonsToShow(initialPersons) // a bit quick and dirty
       })
   }, [])
 
@@ -37,7 +36,26 @@ const App = () => {
     const checkName = persons.filter(person => (person.name === newName))
 
     if (checkName.length > 0) {
-      window.alert(`${newName} is already added to phonebook`)
+      const result = window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)
+      if (result) {
+        const person = persons.find(person => (person.name === newName))
+        const updatedPerson = { ...person, number: newNumber}
+        personService
+          .update(person.id, updatedPerson)
+          .then(updatedPersonReturned => {
+            setPersons(persons.map(person => person.name !== newName ? person : updatedPersonReturned))
+            setPersonsToShow(personsToShow.map(person => person.name !== newName ? person : updatedPersonReturned))
+            setNewName('')
+            setNewNumber('')
+          })
+          .catch(error => {
+            alert(`the person '${person.name}' was already deleted from server`)
+            setPersons(persons.filter(person => (person.name !== newName)))
+            setPersonsToShow(personsToShow.filter(person => (person.name !== newName)))
+            setNewName('')
+            setNewNumber('')
+          })
+      }
     }
     else {
       const personObject = {
@@ -45,11 +63,33 @@ const App = () => {
         number: newNumber
       }
 
-      setPersons(persons.concat(personObject))
-      setPersonsToShow(persons.concat(personObject))
-      setNewName('')
-      setNewNumber('')
-      setStringToSearch('')
+      personService
+        .create(personObject)
+        .then(personAdded => {
+          setPersons(persons.concat(personAdded))
+          setPersonsToShow(persons.concat(personAdded))
+          setNewName('')
+          setNewNumber('')
+          setStringToSearch('')
+        })
+    }
+  }
+
+  const deletePerson = (id) => {
+    // console.log({id})
+    const personToDelete = persons.find(person => person.id === id)
+    // console.log({personToDelete})
+    if (personToDelete) {
+      const result = window.confirm(`Delete ${personToDelete.name}?`)
+      if (result) {
+        personService
+          .deletePerson(id)
+          .then(response => {
+            // console.log('so far...')
+            setPersons(persons.filter(person => person.id !== id))
+            setPersonsToShow(personsToShow.filter(person => person.id !== id))
+          })
+      }
     }
   }
 
@@ -91,8 +131,15 @@ const App = () => {
       />
 
       <h3>Numbers</h3>
-      
-      <Persons personsToShow={personsToShow} />
+      <div>
+        {personsToShow.map((person) =>
+          <Persons 
+            key={person.id}
+            person={person}
+            deletePerson={() => deletePerson(person.id)}
+          />
+        )}
+      </div>
     </div>
   )
 }
