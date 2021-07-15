@@ -3,6 +3,8 @@ import Persons from './components/Persons'
 import PersonForm from './components/PersonForm'
 import Filter from './components/Filter'
 import personService from './services/personService'
+import { Notification, ErrorNotification } from './components/Notification'
+import './index.css'
 
 const App = () => {
   // const [persons, setPersons] = useState([
@@ -16,6 +18,10 @@ const App = () => {
   const [newNumber, setNewNumber] = useState('')
   const [stringToSearch, setStringToSearch] = useState('')
   const [personsToShow, setPersonsToShow] = useState([])
+  const [message, setMessage] = useState(null)
+  const [errorMessage, setErrorMessage] = useState(null)
+
+  const timeOutDuration = 5000
 
   useEffect(() => {
     // console.log('effect')
@@ -47,9 +53,16 @@ const App = () => {
             setPersonsToShow(personsToShow.map(person => person.name !== newName ? person : updatedPersonReturned))
             setNewName('')
             setNewNumber('')
+            setMessage(`Updated ${person.name}'s number to ${newNumber}`)
+            setTimeout(() => {
+              setMessage(null)
+            }, timeOutDuration)
           })
           .catch(error => {
-            alert(`the person '${person.name}' was already deleted from server`)
+            setErrorMessage(`Information of ${person.name} has already been removed from server`)
+            setTimeout(() => {
+              setMessage(null)
+            }, timeOutDuration)
             setPersons(persons.filter(person => (person.name !== newName)))
             setPersonsToShow(personsToShow.filter(person => (person.name !== newName)))
             setNewName('')
@@ -71,6 +84,10 @@ const App = () => {
           setNewName('')
           setNewNumber('')
           setStringToSearch('')
+          setMessage(`Added ${personObject.name}`)
+          setTimeout(() => {
+            setMessage(null)
+          }, timeOutDuration)
         })
     }
   }
@@ -88,6 +105,10 @@ const App = () => {
             // console.log('so far...')
             setPersons(persons.filter(person => person.id !== id))
             setPersonsToShow(personsToShow.filter(person => person.id !== id))
+            setMessage(`Deleted ${personToDelete.name}`)
+            setTimeout(() => {
+              setMessage(null)
+            }, timeOutDuration)
           })
       }
     }
@@ -117,7 +138,8 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-
+      <Notification message={message} />
+      <ErrorNotification message={errorMessage} />
       <Filter stringToSearch={stringToSearch} handleSearch={handleSearch} />
 
       <h3>Add a new</h3>
