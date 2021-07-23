@@ -1,0 +1,15 @@
+DELETE http://localhost:3001/api/notes/2
+
+######
+
+GET http://localhost:3001/api/notes
+
+######
+
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+
+{
+  "content": "This is even more awesome stuff"
+}
+

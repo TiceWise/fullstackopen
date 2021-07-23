@@ -1,0 +1,31 @@
+GET http://localhost:3001/api/persons
+
+#######
+
+GET http://localhost:3001/api/persons/2
+
+###########
+
+DELETE http://localhost:3001/api/persons/2
+
+#########
+
+GET http://localhost:3001/api/persons/2
+
+######
+
+GET http://localhost:3001/api/persons
+
+########
+
+POST http://localhost:3001/api/persons
+content-type: application/json
+
+{
+  "name": "Tice Testin",
+  "number": "02734093"
+}
+
+#########
+
+GET http://localhost:3001/typo
