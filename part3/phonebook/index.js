@@ -5,8 +5,8 @@ const cors = require('cors')
 const app = express()
 
 app.use(express.json())
-app.use(cors())
 app.use(express.static('build'))
+app.use(cors())
 
 // morgan.token('http-post-data', function (req, res) { return JSON.stringify(req.body) })
 // or if only return on POST requests like the assignment suggests:
@@ -38,6 +38,10 @@ let persons = [
     "number": "39-23-6423122"
   }
 ]
+
+app.get('/', (request, response) => {
+  response.send('empty placeholder')
+})
 
 app.get('/info', (request, response) => {
   const numberOfPersons = persons.length
