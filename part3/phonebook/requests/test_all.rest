@@ -29,3 +29,17 @@ content-type: application/json
 #########
 
 GET http://localhost:3001/typo
+
+#######################
+
+GET https://fullstackopen-tice-phonebook.herokuapp.com/api/persons
+
+#######
+
+POST https://fullstackopen-tice-phonebook.herokuapp.com/api/persons
+content-type: application/json
+
+{
+  "name": "Tice Testin",
+  "number": "02734093"
+}
