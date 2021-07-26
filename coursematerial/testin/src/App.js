@@ -4,20 +4,6 @@ import noteService from './services/notes'
 import './index.css'
 import Notification from './components/Notification'
 
-const Footer = () => {
-  const footerStyle = {
-    color: 'green',
-    fontStyle: 'italic',
-    fontSize: 16
-  }
-  return (
-    <div style={footerStyle}>
-      <br />
-      <em>Note app, Department of Computer Science, University of Helsinki 2021</em>
-    </div>
-  )
-}
-
 const App = () => {
   const [notes, setNotes] = useState([])
   // const [notes, setNotes] = useState([])  // if you want to start with an empty list
@@ -38,7 +24,7 @@ const App = () => {
   const toggleImportanceOf = (id) => {
     const note = notes.find(n => n.id === id)
     const changedNote = { ...note, important: !note.important }
-    
+
     noteService
       .update(id, changedNote)
       .then(updatedNote => {
@@ -107,7 +93,6 @@ const App = () => {
         />
         <button type='submit'>save</button>
       </form>
-      <Footer />
     </div>
   )
 }
