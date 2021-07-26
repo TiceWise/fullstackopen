@@ -6,6 +6,7 @@ const app = express()
 
 app.use(express.json())
 app.use(cors())
+app.use(express.static('build'))
 
 // morgan.token('http-post-data', function (req, res) { return JSON.stringify(req.body) })
 // or if only return on POST requests like the assignment suggests:
