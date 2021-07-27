@@ -131,7 +131,7 @@ app.put('/api/persons/:id', (request, response, next) => {
     number: body.number
   }
 
-  PhonebookEntry.findByIdAndUpdate(request.params.id, newPhonebookEntry, { new: true })
+  PhonebookEntry.findByIdAndUpdate(request.params.id, newPhonebookEntry, { new: true, runValidators: true, context: 'query' })
     .then(updatedPbEntry => {
       if (updatedPbEntry) {
         response.json(updatedPbEntry)
@@ -154,6 +154,8 @@ const errorHandler = (error, request, response, next) => {
 
   if (error.name === 'CastError') {
     return response.status(400).send({ error: 'malformatted id' })
+  } else if (error.name === 'ValidationError') {
+    return response.status(400).json({ error: error.message })
   }
 
   next(error)
