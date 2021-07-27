@@ -43,3 +43,41 @@ content-type: application/json
   "name": "Tice Testin",
   "number": "02734093"
 }
+
+##################
+################
+##################
+
+GET http://localhost:3001/api/persons
+
+#######
+
+GET http://localhost:3001/api/persons/60ff0943b8177bd7027e1137
+
+#######
+
+GET http://localhost:3001/api/persons/somewrongformat
+
+###########
+
+DELETE http://localhost:3001/api/persons/60ff0943b8177bd7027e1137
+
+########
+
+POST http://localhost:3001/api/persons
+content-type: application/json
+
+{
+  "name": "Tice Testin",
+  "number": "02734093"
+}
+
+#########
+
+PUT http://localhost:3001/api/persons/610014c8ee7c9cf13d6beece
+content-type: application/json
+
+{
+  "name": "Tice Testin",
+  "number": "9873250234"
+}
