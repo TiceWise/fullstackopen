@@ -14,34 +14,9 @@ app.use(cors())
 
 // morgan.token('http-post-data', function (req, res) { return JSON.stringify(req.body) })
 // or if only return on POST requests like the assignment suggests:
-morgan.token('http-post-data', function (req, res) { 
-  return req.method === 'POST' ? JSON.stringify(req.body) : " "
-})
+morgan.token('http-post-data', (req) => req.method === 'POST' ? JSON.stringify(req.body) : ' ')
 
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :http-post-data'))
-
-// let persons = [
-//   { 
-//     "id": 1,
-//     "name": "Arto Hellas", 
-//     "number": "040-123456"
-//   },
-//   { 
-//     "id": 2,
-//     "name": "Ada Lovelace", 
-//     "number": "39-44-5323523"
-//   },
-//   { 
-//     "id": 3,
-//     "name": "Dan Abramov", 
-//     "number": "12-43-234345"
-//   },
-//   { 
-//     "id": 4,
-//     "name": "Mary Poppendieck", 
-//     "number": "39-23-6423122"
-//   }
-// ]
 
 app.get('/', (request, response) => {
   response.send('if you see this, build is not loaded')
@@ -82,7 +57,7 @@ app.get('/api/persons/:id', (request, response, next) => {
 
 app.delete('/api/persons/:id', (request, response, next) => {
   PhonebookEntry.findByIdAndRemove(request.params.id)
-    .then(result => {
+    .then(() => {
       response.status(204).end()
     })
     .catch(error => next(error))
@@ -93,11 +68,11 @@ app.delete('/api/persons/:id', (request, response, next) => {
 // }
 
 app.post('/api/persons', (request,response, next) => {
-  // The json-parser takes the raw data from the requests that's stored in the 
-  // request object, parses it into a JavaScript object and assigns it to the 
+  // The json-parser takes the raw data from the requests that's stored in the
+  // request object, parses it into a JavaScript object and assigns it to the
   // request object as a new property body.
   const body = request.body
-  
+
   if (!body.name || !body.number) {
     return response.status(400).json({
       error: 'name and/or number missing'
@@ -119,7 +94,7 @@ app.post('/api/persons', (request,response, next) => {
 
 app.put('/api/persons/:id', (request, response, next) => {
   const body = request.body
-  
+
   if (!body.name || !body.number) {
     return response.status(400).json({
       error: 'name and/or number missing'

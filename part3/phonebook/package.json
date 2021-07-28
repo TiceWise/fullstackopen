@@ -8,9 +8,10 @@
     "dev": "nodemon index.js",
     "debug": "nodemon --inspect index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
     "build:ui": "rm -rf build && cd ../../part2/phonebook && npm run build --prod && cp -r build ../../part3/phonebook",
     "deploy": "cd ../.. && git subtree push --prefix part3/phonebook https://git.heroku.com/fullstackopen-tice-phonebook.git master",
-    "deploy:full": "echo 'building...' && npm run build:ui && echo 'pushing to git...' && git add . && git commit -m 'uibuild' && git push -u origin master && echo 'deploying' && npm run deploy",
+    "deploy:full": "echo 'building...' && npm run build:ui && echo 'pushing to git...' && git add . && git commit -m 'part 3 3.1-3.22 complete and all eslint fixed' && git push -u origin master && echo 'deploying' && npm run deploy",
     "logs:prod": "heroku logs --tail --app fullstackopen-tice-phonebook"
   },
   "author": "Thijs de Groot",
@@ -24,6 +25,8 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "eslint": "^7.31.0",
+    "eslint-plugin-react": "^7.24.0",
     "nodemon": "^2.0.12"
   }
 }
