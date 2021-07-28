@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Filter = ({ stringToSearch , handleSearch }) => {
+const Filter = ({ stringToSearch, handleSearch }) => {
   return (
     <form>
       <div>
         filter shown with
-      <input
+        <input
           value={stringToSearch}
           onChange={handleSearch}
         />

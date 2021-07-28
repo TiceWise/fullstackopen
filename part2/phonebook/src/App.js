@@ -59,14 +59,20 @@ const App = () => {
             }, timeOutDuration)
           })
           .catch(error => {
-            setErrorMessage(`Information of ${person.name} has already been removed from server`)
-            setTimeout(() => {
-              setMessage(null)
-            }, timeOutDuration)
-            setPersons(persons.filter(person => (person.name !== newName)))
-            setPersonsToShow(personsToShow.filter(person => (person.name !== newName)))
-            setNewName('')
-            setNewNumber('')
+            console.log('UPDATE ERROR', error.response.data.error)
+            console.log('STATUS', error.response.status)
+            if (error.response.status === 404) {
+              setErrorMessage(`Information of ${person.name} has already been removed from server`)
+              setTimeout(() => {
+                setMessage(null)
+              }, timeOutDuration)
+              setPersons(persons.filter(person => (person.name !== newName)))
+              setPersonsToShow(personsToShow.filter(person => (person.name !== newName)))
+              setNewName('')
+              setNewNumber('')
+            } else {
+              setErrorMessage(error.response.data.error)
+            }
           })
       }
     }
@@ -89,6 +95,10 @@ const App = () => {
             setMessage(null)
           }, timeOutDuration)
         })
+        .catch(error => {
+          console.log('CREATE ERROR', error.response.data.error)
+          setErrorMessage(error.response.data.error)
+        })
     }
   }
 
@@ -101,7 +111,7 @@ const App = () => {
       if (result) {
         personService
           .deletePerson(id)
-          .then(response => {
+          .then(() => {
             // console.log('so far...')
             setPersons(persons.filter(person => person.id !== id))
             setPersonsToShow(personsToShow.filter(person => person.id !== id))
