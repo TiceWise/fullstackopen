@@ -1,0 +1,25 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+  "title": "Some awesome blog",
+  "author": "TiceWise Gimbell",
+  "url": "http://check.this.out",
+  "likes": 103
+}
+
+#########################
+
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+  "title": "Another interesting read",
+  "author": "Nick Rick",
+  "url": "http://check.that.in",
+  "likes": 5
+}
+
+#########################
+
+GET http://localhost:3003/api/blogs

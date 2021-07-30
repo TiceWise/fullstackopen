@@ -68,8 +68,8 @@ POST http://localhost:3001/api/persons
 content-type: application/json
 
 {
-  "name": "Tice Testin",
-  "number": "8765654"
+  "name": "Tice Testin NEWer",
+  "number": "87656549789798"
 }
 
 #########
@@ -78,6 +78,6 @@ PUT http://localhost:3001/api/persons/610017fbbd1fcaf223660e6c
 content-type: application/json
 
 {
-  "name": "Tice Testin",
-  "number": "9873250234"
+  "name": "Ti",
+  "number": "9873275675765"
 }
