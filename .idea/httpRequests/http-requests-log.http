@@ -1,0 +1,36 @@
+PUT http://localhost:3003/api/blogs/610fb302f744463a664931b7
+Content-Type: application/json
+
+{
+  "likes": 7
+}
+
+<> 2021-08-08T125916.200.json
+
+###
+
+PUT http://localhost:3003/api/blogs/610fb302f744463a664931b7
+Content-Type: application/json
+
+{
+  "likes": 6
+}
+
+<> 2021-08-08T125900.200.json
+
+###
+
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+  "title": "Some awesome blog",
+  "author": "TiceWise Gimbell",
+  "url": "http://check.this.out",
+  "likes": 103
+}
+
+<> 2021-08-08T123338.200.json
+
+###
+

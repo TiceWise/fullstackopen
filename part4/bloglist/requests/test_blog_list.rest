@@ -23,3 +23,12 @@ Content-Type: application/json
 #########################
 
 GET http://localhost:3003/api/blogs
+
+##########
+
+PUT http://localhost:3003/api/blogs/610fb302f744463a664931b7
+Content-Type: application/json
+
+{
+  "likes": 7
+}

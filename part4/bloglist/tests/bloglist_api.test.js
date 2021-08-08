@@ -25,7 +25,7 @@ test('blogs are return as json', async () => {
         .expect('Content-Type', /application\/json/)
 })
 
-test('all notes are returned', async () => {
+test('all blogs are returned', async () => {
     const response = await api.get(baseRoute)
     expect(response.body).toHaveLength(helper.initialBlogs.length)
 })
@@ -113,6 +113,54 @@ test('if title and url properties are missing, the backend responds with 400 Bad
         .send(newBlog)
         .expect(400)
 
+})
+
+test('a specific blog can be viewed', async () => {
+    const blogsAtStart = await helper.blogsInDb()
+    const blogToView = blogsAtStart[0]
+
+    const resultBlog = await api
+        .get(`${baseRoute}/${blogToView.id}`)
+        .expect(200)
+        .expect('Content-Type', /application\/json/)
+
+    const processedBlogToView = JSON.parse(JSON.stringify(blogToView))
+
+    expect(resultBlog.body).toEqual(processedBlogToView)
+})
+
+test('a blog can be updated', async () => {
+    const blogsAtStart = await helper.blogsInDb()
+    const blogToUpdate = blogsAtStart[0]
+
+    blogToUpdate.likes++
+
+    await api
+        .put(`${baseRoute}/${blogToUpdate.id}`)
+        .send(blogToUpdate)
+        .expect(200)
+
+    const updatedBlog = await api
+        .get(`${baseRoute}/${blogToUpdate.id}`)
+
+    expect(updatedBlog.body.likes).toEqual(blogToUpdate.likes)
+})
+
+test('a blog can be deleted', async () => {
+    const blogsAtStart = await helper.blogsInDb()
+    const blogToDelete = blogsAtStart[0]
+
+    await api
+        .delete(`${baseRoute}/${blogToDelete.id}`)
+        .expect(204)
+
+    const blogsAtEnd = await helper.blogsInDb()
+
+    expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length - 1)
+
+    const titles = blogsAtEnd.map(r => r.titles)
+
+    expect(titles).not.toContain(blogToDelete.title)
 })
 
 afterAll(() => {
