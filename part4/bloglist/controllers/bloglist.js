@@ -7,9 +7,19 @@ bloglistRouter.get('/', async (request, response) => {
 })
 
 bloglistRouter.post('/', async (request, response) => {
-    const blog = new Blog(request.body)
+    const incomingBlog = request.body
 
+    if (!('url' in incomingBlog) && !('title' in incomingBlog)) {
+        return response.status(400).end()
+    }
+
+    if (!('likes' in incomingBlog)) {
+        incomingBlog.likes = 0
+    }
+
+    const blog = new Blog(incomingBlog)
     const savedBlog = await blog.save()
+
     response.json(savedBlog)
 })
 
