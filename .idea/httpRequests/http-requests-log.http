@@ -1,194 +1,356 @@
-POST http://localhost:3003/api/users
+POST http://localhost:3003/api/login
 Content-Type: application/json
 
 {
-  "blogs": [],
-  "username": "la",
-  "name": "TD",
+  "username": "ticewisenew",
   "password": "randomforsafety"
 }
 
-<> 2021-08-29T171848.500.html
+<> 2021-08-30T234345.200.json
 
 ###
-
-GET http://localhost:3003/api/users
 
 POST http://localhost:3003/api/users
 Content-Type: application/json
 
 {
-  "blogs": [],
-  "username": "la",
-  "name": "TD",
+  "username": "ticewiseprice",
+  "name": "thijs",
   "password": "randomforsafety"
 }
 
-<> 2021-08-29T171831.200.json
+<> 2021-08-30T234249.200.json
 
 ###
-
-GET http://localhost:3003/api/users
 
 POST http://localhost:3003/api/users
 Content-Type: application/json
 
 {
-  "blogs": [],
-  "username": "la",
-  "name": "TD",
+  "username": "ticewise",
+  "name": "thijs",
   "password": "randomforsafety"
 }
 
-<> 2021-08-29T171640.200.json
-
-###
-
-GET http://localhost:3003/api/users
-
-POST http://localhost:3003/api/users
-Content-Type: application/json
-
-{
-  "blogs": [],
-  "username": "la",
-  "name": "TD",
-  "password": "randomforsafety"
-}
-
-<> 2021-08-29T171628.200.json
-
-###
-
-GET http://localhost:3003/api/users
-
-<> 2021-08-29T165819.200.json
-
-###
-
-POST http://localhost:3003/api/users
-Content-Type: application/json
-
-{
-  "blogs": [],
-  "username": "tice",
-  "name": "TD",
-  "password": "randomforsafety"
-}
-
-<> 2021-08-29T165543.500.html
-
-###
-
-POST http://localhost:3003/api/users
-Content-Type: application/json
-
-{
-  "blogs": [],
-  "username": "tice",
-  "name": "TD",
-  "password": "randomforsafety"
-}
-
-<> 2021-08-29T165538.200.json
-
-###
-
-POST http://localhost:3003/api/users
-Content-Type: application/json
-
-{
-  "blogs": [],
-  "username": "root",
-  "name": "Superuser",
-  "password": "salainen"
-}
-
-<> 2021-08-29T165249.500.html
-
-###
-
-POST http://localhost:3003/api/users
-Content-Type: application/json
-
-{
-  "notes": [],
-  "username": "root",
-  "name": "Superuser",
-  "password": "salainen"
-}
-
-<> 2021-08-29T165037.500.html
+<> 2021-08-30T234239.500.html
 
 ###
 
 GET http://localhost:3003/api/blogs
 
-<> 2021-08-29T164931.200.json
+<> 2021-08-30T233309.500.html
 
 ###
 
-POST http://localhost:3003/api/users
-Content-Type: application/json
-
-{
-  "notes": [],
-  "username": "root",
-  "name": "Superuser",
-  "password": "salainen"
-}
-
-<> 2021-08-29T162133.500.html
+DELETE http://localhost:3003/api/blogs/612d4cfd12555a0b7ca9d3e5
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRpY2V3aXNlbmV3IiwiaWQiOiI2MTJkMzc3MzdkMDVjZDA3MzgzMzMxMTUiLCJpYXQiOjE2MzAzNTMyNzh9.d67-Y0e9r4a6hVjfP2qna1k3D-FVTCNIEP2M4YSRwps
 
 ###
 
-POST http://localhost:3003/api/users
+POST http://localhost:3003/api/blogs
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRpY2V3aXNlbmV3IiwiaWQiOiI2MTJkMzc3MzdkMDVjZDA3MzgzMzMxMTUiLCJpYXQiOjE2MzAzNTMyNzh9.d67-Y0e9r4a6hVjfP2qna1k3D-FVTCNIEP2M4YSRwps
 
 {
-  "notes": [],
-  "username": "root",
-  "name": "Superuser",
-  "password": "salainen"
+  "title": "Latest verified blog by Tice",
+  "author": "Le Td",
+  "url": "http://check.that.in",
+  "likes": 5
 }
 
-<> 2021-08-29T152929.500.html
+<> 2021-08-30T232621.200.json
 
 ###
 
-POST http://localhost:3003/api/users
-Content-Type: application/json
+DELETE http://localhost:3003/api/blogs/612d4b3201ad840af1d14a1e
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRpY2V3aXNlbmV3IiwiaWQiOiI2MTJkMzc3MzdkMDVjZDA3MzgzMzMxMTUiLCJpYXQiOjE2MzAzNTMyNzh9.d67-Y0e9r4a6hVjfP2qna1k3D-FVTCNIEP2M4YSRwps
 
-{
-  "notes": [],
-  "username": "root",
-  "name": "Superuser",
-  "password": "salainen"
-}
-
-<> 2021-08-29T152848.200.json
+<> 2021-08-30T232609.404.json
 
 ###
 
-PUT http://localhost:3003/api/blogs/610fb302f744463a664931b7
+POST http://localhost:3003/api/blogs
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRpY2V3aXNlbmV3IiwiaWQiOiI2MTJkMzc3MzdkMDVjZDA3MzgzMzMxMTUiLCJpYXQiOjE2MzAzNTMyNzh9.d67-Y0e9r4a6hVjfP2qna1k3D-FVTCNIEP2M4YSRwps
 
 {
-  "likes": 7
+  "title": "Latest verified blog by Tice",
+  "author": "Le Td",
+  "url": "http://check.that.in",
+  "likes": 5
 }
 
-<> 2021-08-08T125916.200.json
+<> 2021-08-30T232544.200.json
 
 ###
 
-PUT http://localhost:3003/api/blogs/610fb302f744463a664931b7
+DELETE http://localhost:3003/api/blogs/612d4b3201ad840af1d14a1e
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRpY2V3aXNlbmV3IiwiaWQiOiI2MTJkMzc3MzdkMDVjZDA3MzgzMzMxMTUiLCJpYXQiOjE2MzAzNTMyNzh9.d67-Y0e9r4a6hVjfP2qna1k3D-FVTCNIEP2M4YSRwps
+
+<> 2021-08-30T232407.404.json
+
+###
+
+DELETE http://localhost:3003/api/blogs/612d4b3201ad840af1d14a1e
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRpY2V3aXNlbmV3IiwiaWQiOiI2MTJkMzc3MzdkMDVjZDA3MzgzMzMxMTUiLCJpYXQiOjE2MzAzNTMyNzh9.d67-Y0e9r4a6hVjfP2qna1k3D-FVTCNIEP2M4YSRwps
+
+<> 2021-08-30T232307.500.html
+
+###
+
+DELETE http://localhost:3003/api/blogs/612d4b3201ad840af1d14a1e
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRpY2V3aXNlbmV3IiwiaWQiOiI2MTJkMzc3MzdkMDVjZDA3MzgzMzMxMTUiLCJpYXQiOjE2MzAzNTMyNzh9.d67-Y0e9r4a6hVjfP2qna1k3D-FVTCNIEP2M4YSRwps
+
+<> 2021-08-30T232111.500.html
+
+###
+
+DELETE http://localhost:3003/api/blogs/612d4b3201ad840af1d14a1e
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRpY2V3aXNlbmV3IiwiaWQiOiI2MTJkMzc3MzdkMDVjZDA3MzgzMzMxMTUiLCJpYXQiOjE2MzAzNTMyNzh9.d67-Y0e9r4a6hVjfP2qna1k3D-FVTCNIEP2M4YSRwps
+
+<> 2021-08-30T231959.500.html
+
+###
+
+DELETE http://localhost:3003/api/blogs/612d4b3201ad840af1d14a1e
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRpY2V3aXNlbmV3IiwiaWQiOiI2MTJkMzc3MzdkMDVjZDA3MzgzMzMxMTUiLCJpYXQiOjE2MzAzNTMyNzh9.d67-Y0e9r4a6hVjfP2qna1k3D-FVTCNIEP2M4YSRwps
+
+###
+
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRpY2V3aXNlbmV3IiwiaWQiOiI2MTJkMzc3MzdkMDVjZDA3MzgzMzMxMTUiLCJpYXQiOjE2MzAzNTMyNzh9.d67-Y0e9r4a6hVjfP2qna1k3D-FVTCNIEP2M4YSRwps
+
+{
+  "title": "Latest verified blog by Tice",
+  "author": "Le Td",
+  "url": "http://check.that.in",
+  "likes": 5
+}
+
+<> 2021-08-30T231842.200.json
+
+###
+
+DELETE http://localhost:3003/api/blogs/612d4a915c10a00ad0745099
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRpY2V3aXNlbmV3IiwiaWQiOiI2MTJkMzc3MzdkMDVjZDA3MzgzMzMxMTUiLCJpYXQiOjE2MzAzNTMyNzh9.d67-Y0e9r4a6hVjfP2qna1k3D-FVTCNIEP2M4YSRwps
+
+<> 2021-08-30T231837.500.html
+
+###
+
+DELETE http://localhost:3003/api/blogs/612d4a915c10a00ad0745099
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRpY2V3aXNlbmV3IiwiaWQiOiI2MTJkMzc3MzdkMDVjZDA3MzgzMzMxMTUiLCJpYXQiOjE2MzAzNTMyNzh9.d67-Y0e9r4a6hVjfP2qna1k3D-FVTCNIEP2M4YSRwps
+
+<> 2021-08-30T231808.500.html
+
+###
+
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRpY2V3aXNlbmV3IiwiaWQiOiI2MTJkMzc3MzdkMDVjZDA3MzgzMzMxMTUiLCJpYXQiOjE2MzAzNTMyNzh9.d67-Y0e9r4a6hVjfP2qna1k3D-FVTCNIEP2M4YSRwps
+
+{
+  "title": "Latest verified blog by Tice",
+  "author": "Le Td",
+  "url": "http://check.that.in",
+  "likes": 5
+}
+
+<> 2021-08-30T231804.200.json
+
+###
+
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer invalidtokeneeeeeeee
+
+{
+  "title": "Latest verified blog by Tice",
+  "author": "Le Td",
+  "url": "http://check.that.in",
+  "likes": 5
+}
+
+<> 2021-08-30T231759.500.html
+
+###
+
+DELETE http://localhost:3003/api/blogs/612d4a915c10a00ad0745099
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRpY2V3aXNlbmV3IiwiaWQiOiI2MTJkMzc3MzdkMDVjZDA3MzgzMzMxMTUiLCJpYXQiOjE2MzAzNTMyNzh9.d67-Y0e9r4a6hVjfP2qna1k3D-FVTCNIEP2M4YSRwps
+
+###
+
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRpY2V3aXNlbmV3IiwiaWQiOiI2MTJkMzc3MzdkMDVjZDA3MzgzMzMxMTUiLCJpYXQiOjE2MzAzNTMyNzh9.d67-Y0e9r4a6hVjfP2qna1k3D-FVTCNIEP2M4YSRwps
+
+{
+  "title": "Latest verified blog by Tice",
+  "author": "Le Td",
+  "url": "http://check.that.in",
+  "likes": 5
+}
+
+<> 2021-08-30T231601.200.json
+
+###
+
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRpY2V3aXNlbmV3IiwiaWQiOiI2MTJkMzc3MzdkMDVjZDA3MzgzMzMxMTUiLCJpYXQiOjE2MzAzNTMyNzh9.d67-Y0e9r4a6hVjfP2qna1k3D-FVTCNIEP2M4YSRwps
+
+{
+  "title": "Latest verified blog by Tice",
+  "author": "Le Td",
+  "url": "http://check.that.in",
+  "likes": 5
+}
+
+<> 2021-08-30T231441.500.html
+
+###
+
+DELETE http://localhost:3003/api/blogs/612d46a74ad3a30a226aaa6c
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRpY2V3aXNlbmV3IiwiaWQiOiI2MTJkMzc3MzdkMDVjZDA3MzgzMzMxMTUiLCJpYXQiOjE2MzAzNTMyNzh9.d67-Y0e9r4a6hVjfP2qna1k3D-FVTCNIEP2M4YSRwps
+
+###
+
+DELETE http://localhost:3003/api/blogs/612d46a74ad3a30a226aaa6c
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRpY2V3aXNlbmV3IiwiaWQiOiI2MTJkMzc3MzdkMDVjZDA3MzgzMzMxMTUiLCJpYXQiOjE2MzAzNTMyNzh9.d67-Y0e9r4a6hVjfP2qna1k3D-FVTCNIEP2M4YSRwps
+
+###
+
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRpY2V3aXNlbmV3IiwiaWQiOiI2MTJkMzc3MzdkMDVjZDA3MzgzMzMxMTUiLCJpYXQiOjE2MzAzNTMyNzh9.d67-Y0e9r4a6hVjfP2qna1k3D-FVTCNIEP2M4YSRwps
+
+{
+  "title": "Latest verified blog by Tice",
+  "author": "Le Td",
+  "url": "http://check.that.in",
+  "likes": 5
+}
+
+<> 2021-08-30T225919.200.json
+
+###
+
+DELETE http://localhost:3003/api/blogs/612d3d3db604cc07ef27245e
+
+<> 2021-08-30T225841.500.html
+
+###
+
+DELETE http://localhost:3003/api/blogs/612d3d3db604cc07ef27245e
+
+###
+
+POST http://localhost:3003/api/login
 Content-Type: application/json
 
 {
-  "likes": 6
+  "username": "ticewisenew",
+  "password": "randomforsafety"
 }
 
-<> 2021-08-08T125900.200.json
+<> 2021-08-30T225251.200.json
+
+###
+
+POST http://localhost:3003/api/login
+Content-Type: application/json
+
+{
+  "username": "ticewisenew",
+  "password": "randomforsafety"
+}
+
+<> 2021-08-30T224904.200.json
+
+###
+
+POST http://localhost:3003/api/login
+Content-Type: application/json
+
+{
+  "username": "ticewisenew",
+  "password": "randomforsafety"
+}
+
+<> 2021-08-30T224851.200.json
+
+###
+
+POST http://localhost:3003/api/login
+Content-Type: application/json
+
+{
+  "username": "ticewisenew",
+  "password": "randomforsafety"
+}
+
+<> 2021-08-30T224841.500.html
+
+###
+
+POST http://localhost:3003/api/login
+Content-Type: application/json
+
+{
+  "username": "ticewisenew",
+  "password": "randomforsafety"
+}
+
+<> 2021-08-30T224718.500.html
+
+###
+
+POST http://localhost:3003/api/login
+Content-Type: application/json
+
+{
+  "username": "ticewisenew",
+  "password": "randomforsafety"
+}
+
+<> 2021-08-30T224124.200.json
+
+###
+
+POST http://localhost:3003/api/login
+Content-Type: application/json
+
+{
+  "username": "ticewisenew",
+  "password": "randomforsafety"
+}
+
+<> 2021-08-30T224043.500.html
+
+###
+
+POST http://localhost:3003/api/login
+Content-Type: application/json
+
+{
+  "username": "ticewisenew",
+  "password": "randomforsafety"
+}
+
+<> 2021-08-30T223908.500.html
+
+###
+
+POST http://localhost:3003/api/login
+Content-Type: application/json
+
+{
+  "username": "ticewisenew",
+  "password": "randomforsafety"
+}
+
+<> 2021-08-30T222923.500.html
 
 ###
 
@@ -196,13 +358,158 @@ POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
 {
-  "title": "Some awesome blog",
-  "author": "TiceWise Gimbell",
-  "url": "http://check.this.out",
-  "likes": 103
+  "title": "Another interesting read",
+  "author": "Nick Rick",
+  "url": "http://check.that.in",
+  "likes": 5
 }
 
-<> 2021-08-08T123338.200.json
+<> 2021-08-30T221922.500.html
+
+###
+
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRpY2V3aXNlbmV3IiwiaWQiOiI2MTJkMzc3MzdkMDVjZDA3MzgzMzMxMTUiLCJpYXQiOjE2MzAzNTMyNzh9.d67-Y0e9r4a6hVjfP2qna1k3D-FVTCNIEP2M4YSRwps
+
+{
+  "title": "Latest verified blog by Tice",
+  "author": "Le Td",
+  "url": "http://check.that.in",
+  "likes": 5
+}
+
+<> 2021-08-30T221909.200.json
+
+###
+
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer invalidtokeneeeeeeee
+
+{
+  "title": "Latest verified blog by Tice",
+  "author": "Le Td",
+  "url": "http://check.that.in",
+  "likes": 5
+}
+
+<> 2021-08-30T221859.500.html
+
+###
+
+GET http://localhost:3003/api/users
+
+<> 2021-08-30T221319.200.json
+
+###
+
+GET http://localhost:3003/api/blogs
+
+<> 2021-08-30T221152.200.json
+
+###
+
+GET http://localhost:3003/api/users
+
+<> 2021-08-30T221128.200.json
+
+###
+
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+  "username": "ticewisenew",
+  "name": "thijs2",
+  "password": "randomforsafety"
+}
+
+<> 2021-08-30T221120.500.html
+
+###
+
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRpY2V3aXNlbmV3IiwiaWQiOiI2MTJkMzc3MzdkMDVjZDA3MzgzMzMxMTUiLCJpYXQiOjE2MzAzNTMyNzh9.d67-Y0e9r4a6hVjfP2qna1k3D-FVTCNIEP2M4YSRwps
+
+{
+  "title": "Latest verified blog by Tice",
+  "author": "Le Td",
+  "url": "http://check.that.in",
+  "likes": 5
+}
+
+<> 2021-08-30T221103.200.json
+
+###
+
+GET http://localhost:3003/api/users
+
+<> 2021-08-30T215637.200.json
+
+###
+
+GET http://localhost:3003/api/users
+
+<> 2021-08-30T215534.200.json
+
+###
+
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRpY2V3aXNlbmV3IiwiaWQiOiI2MTJkMzc3MzdkMDVjZDA3MzgzMzMxMTUiLCJpYXQiOjE2MzAzNTMyNzh9.d67-Y0e9r4a6hVjfP2qna1k3D-FVTCNIEP2M4YSRwps
+
+{
+  "title": "New verified blog by Tice",
+  "author": "Le Td",
+  "url": "http://check.that.in",
+  "likes": 5
+}
+
+<> 2021-08-30T215527.200.json
+
+###
+
+GET http://localhost:3003/api/users
+
+<> 2021-08-30T215515.200.json
+
+###
+
+POST http://localhost:3003/api/login
+Content-Type: application/json
+
+{
+  "username": "ticewisenew",
+  "password": "randomforsafety"
+}
+
+<> 2021-08-30T215438.200.json
+
+###
+
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+  "username": "ticewisenew",
+  "name": "thijs2",
+  "password": "randomforsafety"
+}
+
+<> 2021-08-30T215428.200.json
+
+###
+
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+  "username": "ticewisenew",
+  "name": "thijs2",
+  "password": "randomforsafety"
+}
 
 ###
 

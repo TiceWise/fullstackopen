@@ -1,5 +1,6 @@
 const bloglistRouter = require("express").Router()
 const Blog = require("../models/blog")
+const { userExtractor } = require("../utils/middleware")
 
 bloglistRouter.get("/", async (request, response) => {
     const blogs = await Blog.find({}).populate("user", {
@@ -19,8 +20,11 @@ bloglistRouter.get("/:id", async (request, response) => {
     }
 })
 
-bloglistRouter.post("/", async (request, response) => {
+bloglistRouter.post("/", userExtractor, async (request, response) => {
     const incomingBlog = request.body
+
+    // get user from request object
+    const user = request.user
 
     if (!("url" in incomingBlog) && !("title" in incomingBlog)) {
         return response.status(400).end()
@@ -30,8 +34,14 @@ bloglistRouter.post("/", async (request, response) => {
         incomingBlog.likes = 0
     }
 
-    const blog = new Blog(incomingBlog)
+    const blog = new Blog({
+        ...incomingBlog,
+        user: user._id,
+    })
+
     const savedBlog = await blog.save()
+    user.blogs.push(savedBlog._id)
+    await user.save()
 
     response.json(savedBlog)
 })
@@ -47,9 +57,24 @@ bloglistRouter.put("/:id", async (request, response) => {
     response.json(returnedUpdatedBlog)
 })
 
-bloglistRouter.delete("/:id", async (request, response) => {
-    await Blog.findByIdAndRemove(request.params.id)
-    response.status(204).end()
+bloglistRouter.delete("/:id", userExtractor, async (request, response) => {
+    const blog = await Blog.findById(request.params.id)
+
+    if (!blog) {
+        return response.status(404).json({ error: "blog not found" })
+    }
+    // get user from request object
+    const user = request.user
+
+    if (!(user.id.toString() === blog.user.toString())) {
+        return response
+            .status(401)
+            .json({ error: "user is not owner of this blog" })
+    } else {
+        await Blog.findByIdAndRemove(request.params.id)
+        // TODO: also remove blog from user blog list
+        response.status(204).end()
+    }
 })
 
 module.exports = bloglistRouter

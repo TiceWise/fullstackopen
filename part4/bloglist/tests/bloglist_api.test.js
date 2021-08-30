@@ -147,12 +147,35 @@ describe("when there is initially one user in db", () => {
 })
 
 describe("when there are initially a few blogs in the db", () => {
+    let beartoken
+
     beforeEach(async () => {
         await Blog.deleteMany({})
 
         const blogObjects = helper.initialBlogs.map((blog) => new Blog(blog))
         const promiseArray = blogObjects.map((blog) => blog.save())
         await Promise.all(promiseArray)
+
+        const username = "hackerboy"
+        const password = "randomforsafety"
+
+        const newUser = {
+            username,
+            name: "hacky",
+            password,
+        }
+
+        const newLoginAttempt = {
+            username,
+            password,
+        }
+
+        await api.post("/api/users").send(newUser)
+
+        const response = await api.post("/api/login").send(newLoginAttempt)
+
+        // token = response.body.token.toString()
+        beartoken = `bearer ${response.body.token}`
     })
 
     test("blogs are return as json", async () => {
@@ -177,17 +200,15 @@ describe("when there are initially a few blogs in the db", () => {
 
     test("a valid blog can be added", async () => {
         const newBlog = {
-            id: "5a422bc61b54a676234d17fc",
             title: "Type wars",
             author: "Robert C. Martin",
             url: "http://blog.cleancoder.com/uncle-bob/2016/05/01/TypeWars.html",
-            likes: 2,
-            __v: 0,
         }
 
         await api
             .post(baseRoute)
             .send(newBlog)
+            .set("Authorization", beartoken)
             .expect(200)
             .expect("Content-Type", /application\/json/)
 
@@ -214,14 +235,12 @@ describe("when there are initially a few blogs in the db", () => {
             __v: 0,
         }
 
-        // const response = await api
         await api
             .post(baseRoute)
             .send(newBlog)
+            .set("Authorization", beartoken)
             .expect(200)
             .expect("Content-Type", /application\/json/)
-
-        // const savedBlog = response.body
 
         const blogsAtEnd = await helper.blogsInDb() // is the last blog always the latest added blog? or use the returned blog?
         const lastBlog = blogsAtEnd.pop()
@@ -239,8 +258,11 @@ describe("when there are initially a few blogs in the db", () => {
             __v: 0,
         }
 
-        // const response = await api
-        await api.post(baseRoute).send(newBlog).expect(400)
+        await api
+            .post(baseRoute)
+            .send(newBlog)
+            .set("Authorization", beartoken)
+            .expect(400)
     })
 
     test("a specific blog can be viewed", async () => {
@@ -274,18 +296,45 @@ describe("when there are initially a few blogs in the db", () => {
     })
 
     test("a blog can be deleted", async () => {
-        const blogsAtStart = await helper.blogsInDb()
-        const blogToDelete = blogsAtStart[0]
+        const newBlog = {
+            title: "Type wars",
+            author: "Robert C. Martin",
+            url: "http://blog.cleancoder.com/uncle-bob/2016/05/01/TypeWars.html",
+        }
 
-        await api.delete(`${baseRoute}/${blogToDelete.id}`).expect(204)
+        const addedBlog = await api
+            .post(baseRoute)
+            .send(newBlog)
+            .set("Authorization", beartoken)
+            .expect(200)
+            .expect("Content-Type", /application\/json/)
+
+        await api
+            .delete(`${baseRoute}/${addedBlog.body.id}`)
+            .set("Authorization", beartoken)
+            .expect(204)
 
         const blogsAtEnd = await helper.blogsInDb()
 
-        expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length - 1)
+        expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length)
 
         const titles = blogsAtEnd.map((r) => r.titles)
 
-        expect(titles).not.toContain(blogToDelete.title)
+        expect(titles).not.toContain(newBlog.title)
+    })
+
+    test("a blog with wrong token results in 401", async () => {
+        const newBlog = {
+            title: "Type wars",
+            author: "Robert C. Martin",
+            url: "http://blog.cleancoder.com/uncle-bob/2016/05/01/TypeWars.html",
+        }
+
+        await api
+            .post(baseRoute)
+            .send(newBlog)
+            .set("Authorization", "wrong token")
+            .expect(401)
     })
 
     afterAll(() => {
