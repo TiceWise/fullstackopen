@@ -32,3 +32,42 @@ Content-Type: application/json
 {
   "likes": 7
 }
+
+############
+
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+  "blogs": [],
+  "username": "root",
+  "name": "Superuser",
+  "password": "salainen"
+}
+
+############
+
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+  "blogs": [],
+  "username": "tice",
+  "name": "TD",
+  "password": "randomforsafety"
+}
+
+############
+
+GET http://localhost:3003/api/users
+
+############
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+  "blogs": [],
+  "username": "la",
+  "name": "TD",
+  "password": "randomforsafety"
+}

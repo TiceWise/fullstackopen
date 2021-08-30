@@ -1,12 +1,16 @@
-const bloglistRouter = require('express').Router()
-const Blog = require('../models/blog')
+const bloglistRouter = require("express").Router()
+const Blog = require("../models/blog")
 
-bloglistRouter.get('/', async (request, response) => {
-    const blogs = await Blog.find({})
+bloglistRouter.get("/", async (request, response) => {
+    const blogs = await Blog.find({}).populate("user", {
+        username: 1,
+        name: 1,
+        id: 1,
+    })
     response.json(blogs)
 })
 
-bloglistRouter.get('/:id', async (request, response) => {
+bloglistRouter.get("/:id", async (request, response) => {
     const blog = await Blog.findById(request.params.id)
     if (blog) {
         response.json(blog)
@@ -15,14 +19,14 @@ bloglistRouter.get('/:id', async (request, response) => {
     }
 })
 
-bloglistRouter.post('/', async (request, response) => {
+bloglistRouter.post("/", async (request, response) => {
     const incomingBlog = request.body
 
-    if (!('url' in incomingBlog) && !('title' in incomingBlog)) {
+    if (!("url" in incomingBlog) && !("title" in incomingBlog)) {
         return response.status(400).end()
     }
 
-    if (!('likes' in incomingBlog)) {
+    if (!("likes" in incomingBlog)) {
         incomingBlog.likes = 0
     }
 
@@ -32,14 +36,18 @@ bloglistRouter.post('/', async (request, response) => {
     response.json(savedBlog)
 })
 
-bloglistRouter.put('/:id', async (request, response) => {
+bloglistRouter.put("/:id", async (request, response) => {
     const updatedBlog = request.body
 
-    const returnedUpdatedBlog = await Blog.findByIdAndUpdate(request.params.id, updatedBlog, {new: true})
+    const returnedUpdatedBlog = await Blog.findByIdAndUpdate(
+        request.params.id,
+        updatedBlog,
+        { new: true }
+    )
     response.json(returnedUpdatedBlog)
 })
 
-bloglistRouter.delete('/:id', async (request, response) => {
+bloglistRouter.delete("/:id", async (request, response) => {
     await Blog.findByIdAndRemove(request.params.id)
     response.status(204).end()
 })

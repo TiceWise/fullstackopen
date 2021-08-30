@@ -1,3 +1,175 @@
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+  "blogs": [],
+  "username": "la",
+  "name": "TD",
+  "password": "randomforsafety"
+}
+
+<> 2021-08-29T171848.500.html
+
+###
+
+GET http://localhost:3003/api/users
+
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+  "blogs": [],
+  "username": "la",
+  "name": "TD",
+  "password": "randomforsafety"
+}
+
+<> 2021-08-29T171831.200.json
+
+###
+
+GET http://localhost:3003/api/users
+
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+  "blogs": [],
+  "username": "la",
+  "name": "TD",
+  "password": "randomforsafety"
+}
+
+<> 2021-08-29T171640.200.json
+
+###
+
+GET http://localhost:3003/api/users
+
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+  "blogs": [],
+  "username": "la",
+  "name": "TD",
+  "password": "randomforsafety"
+}
+
+<> 2021-08-29T171628.200.json
+
+###
+
+GET http://localhost:3003/api/users
+
+<> 2021-08-29T165819.200.json
+
+###
+
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+  "blogs": [],
+  "username": "tice",
+  "name": "TD",
+  "password": "randomforsafety"
+}
+
+<> 2021-08-29T165543.500.html
+
+###
+
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+  "blogs": [],
+  "username": "tice",
+  "name": "TD",
+  "password": "randomforsafety"
+}
+
+<> 2021-08-29T165538.200.json
+
+###
+
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+  "blogs": [],
+  "username": "root",
+  "name": "Superuser",
+  "password": "salainen"
+}
+
+<> 2021-08-29T165249.500.html
+
+###
+
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+  "notes": [],
+  "username": "root",
+  "name": "Superuser",
+  "password": "salainen"
+}
+
+<> 2021-08-29T165037.500.html
+
+###
+
+GET http://localhost:3003/api/blogs
+
+<> 2021-08-29T164931.200.json
+
+###
+
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+  "notes": [],
+  "username": "root",
+  "name": "Superuser",
+  "password": "salainen"
+}
+
+<> 2021-08-29T162133.500.html
+
+###
+
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+  "notes": [],
+  "username": "root",
+  "name": "Superuser",
+  "password": "salainen"
+}
+
+<> 2021-08-29T152929.500.html
+
+###
+
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+  "notes": [],
+  "username": "root",
+  "name": "Superuser",
+  "password": "salainen"
+}
+
+<> 2021-08-29T152848.200.json
+
+###
+
 PUT http://localhost:3003/api/blogs/610fb302f744463a664931b7
 Content-Type: application/json
 
